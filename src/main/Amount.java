@@ -3,11 +3,11 @@ package main;
 public class Amount <T> {
 	
 	private T object;
-	private double quantity;
+	private double amount;
 	
 	public Amount (T object, double quantity) {
 		this.object = object;
-		this.quantity = quantity;
+		this.amount = quantity;
 	}
 	
 	public T getObject() {
@@ -18,10 +18,10 @@ public class Amount <T> {
 	}
 	
 	public double getQuantity() {
-		return quantity;
+		return amount;
 	}
 	public void setQuantity(double quantity) {
-		this.quantity = quantity;
+		this.amount = quantity;
 	}
 	
 	
