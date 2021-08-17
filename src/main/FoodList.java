@@ -28,5 +28,15 @@ public class FoodList {
 	public void add(Amount<Food> food) {
 		this.foodList.add(food);
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("FoodList [foodList=");
+		builder.append(foodList);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 }

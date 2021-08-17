@@ -1,12 +1,30 @@
 package main;
 
-public class Food {
+public class Food implements IToListAmount{
 	
 	private String name;
 	private String info;
 	private IngredientList ingredientList;
 	private NutriValue nutriValue;
 	
+	public Food(String name) {
+		this.name = name;
+	}
+	
+	public Food info(String info) {
+		this.info = info;
+		return this;
+	}
+	
+	public Food ingredientList(IngredientList ingredientList) {
+		this.ingredientList = ingredientList;
+		return this;
+	}
+	
+	public Food nutriValue(NutriValue nutriValue) {
+		this.nutriValue = nutriValue;
+		return this;
+	}
 	
 	//Getters & Setters
 	public String getName() {
@@ -34,5 +52,30 @@ public class Food {
 		this.nutriValue = nutriValue;
 	}
 	
+	
+	//Add Ingredient
+	public void addIngredient(Ingredient ingredient, double amount) {
+		Amount<Ingredient> newIngredient = new Amount<Ingredient>(ingredient, amount);
+		if(this.ingredientList == null)
+			this.ingredientList = new IngredientList();
+		this.ingredientList.add(newIngredient);
+	}
+	
+	
+	//To String
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Food [name=");
+		builder.append(name);
+		builder.append(", info=");
+		builder.append(info);
+		builder.append(", ingredientList=");
+		builder.append(ingredientList);
+		builder.append(", nutriValue=");
+		builder.append(nutriValue);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 }

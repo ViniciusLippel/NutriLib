@@ -18,5 +18,14 @@ public class Mineral {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Mineral [name=");
+		builder.append(name);
+		builder.append(", info=");
+		builder.append(info);
+		builder.append("]");
+		return builder.toString();
+	}
 }

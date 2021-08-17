@@ -31,4 +31,19 @@ public class MineralList {
 		this.mineralList.add(mineral);
 	}
 	
+	//Sum MineralList
+	public void sumMineralList(MineralList mineralList) {
+		for(int i=0; i<mineralList.getMineralList().size(); i++) {
+			this.mineralList.add(mineralList.getMineralList().get(i));
+		}
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("MineralList [mineralList=");
+		builder.append(mineralList);
+		builder.append("]");
+		return builder.toString();
+	}
 }

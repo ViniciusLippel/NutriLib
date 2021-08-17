@@ -36,6 +36,18 @@ public class Ingredient {
 	public void setNutriValue(NutriValue nutriValue) {
 		this.nutriValue = nutriValue;
 	}
-	
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Ingredient [name=");
+		builder.append(name);
+		builder.append(", info=");
+		builder.append(info);
+		builder.append(", nutriValue=");
+		builder.append(nutriValue);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 }
