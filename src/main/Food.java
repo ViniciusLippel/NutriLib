@@ -1,6 +1,8 @@
 package main;
 
-public class Food implements IToListAmount{
+import lists.IngredientList;
+
+public class Food {
 	
 	private String name;
 	private String info;

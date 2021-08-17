@@ -35,7 +35,7 @@ public class Fat {
 	
 	
 	//Sum Fat
-	public void sumFat(Fat fat) {
+	public void sum(Fat fat) {
 		this.total = this.total + fat.getTotal();
 		this.saturated = this.saturated + fat.getSaturated();
 		this.trans = this.trans + fat.getTrans();

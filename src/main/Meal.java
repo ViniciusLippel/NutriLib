@@ -1,5 +1,8 @@
 package main;
 
+import lists.FoodList;
+import lists.IngredientList;
+
 public class Meal {
 	
 	private String name;

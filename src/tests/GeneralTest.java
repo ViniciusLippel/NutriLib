@@ -1,5 +1,6 @@
 package tests;
 
+import lists.IngredientList;
 import main.*;
 
 public class GeneralTest {
@@ -21,7 +22,8 @@ public class GeneralTest {
 		
 		Meal meal = new Meal("Rice and Beans").ingredientList(il);
 		System.out.println(meal.toString());
-
+		
+		il.ad
 	}
 
 }

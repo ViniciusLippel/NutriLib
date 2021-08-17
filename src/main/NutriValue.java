@@ -1,5 +1,8 @@
 package main;
 
+import lists.MineralList;
+import lists.VitaminList;
+
 public class NutriValue {
 	
 	private int servingSize;
@@ -117,9 +120,10 @@ public class NutriValue {
 		this.servingSize = this.servingSize + nutriValue.getServingSize();
 		this.calories = this.calories + nutriValue.getCalories();
 		this.carbs = this.carbs + nutriValue.getCarbs();
-		this.fat.sumFat(nutriValue.getFat());
+		this.fat.sum(nutriValue.getFat());
 		this.protein = this.protein + nutriValue.getProtein();
-		this.mineralList.sumMineralList(nutriValue.getMineralList());
+		this.mineralList.sum(nutriValue.getMineralList());
+		this.vitaminList.sum(nutriValue.getVitaminList());
 	}
 	
 	

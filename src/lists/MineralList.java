@@ -1,6 +1,9 @@
-package main;
+package lists;
 
 import java.util.ArrayList;
+
+import main.Amount;
+import main.Mineral;
 
 public class MineralList {
 	
@@ -28,11 +31,29 @@ public class MineralList {
 	
 	//Add
 	public void add(Amount<Mineral> mineral) {
-		this.mineralList.add(mineral);
+		Amount<Mineral> inList = searchByName(mineral.getObject().getName());
+		if(inList == null)
+			this.mineralList.add(mineral);
+		else {
+			int i = this.mineralList.indexOf(inList);
+			double sum = this.mineralList.get(i).getAmount() + mineral.getAmount();
+			this.mineralList.get(i).setAmount(sum);
+		}
 	}
 	
+	
+	//Search by name
+	public Amount<Mineral> searchByName(String name){
+		for(int i=0; i<this.mineralList.size(); i++) {
+			if(this.mineralList.get(i).getObject().getName() == name)
+				return this.mineralList.get(i);
+		}
+		return null;
+	}
+	
+	
 	//Sum MineralList
-	public void sumMineralList(MineralList mineralList) {
+	public void sum(MineralList mineralList) {
 		for(int i=0; i<mineralList.getMineralList().size(); i++) {
 			this.mineralList.add(mineralList.getMineralList().get(i));
 		}
