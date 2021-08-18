@@ -219,7 +219,7 @@ public class NutriValue {
 			prop.setFat(this.fat.proportional(this.servingSize));
 		prop.setProtein(this.protein / this.servingSize);
 		if(this.mineralList != null)
-			prop.setMineralList(this.mineralList.proportional(this.servingSize));
+			prop.setMineralList(this.mineralList.proportionTo(this.servingSize));
 		if(this.vitaminList != null)
 			prop.setVitaminList(this.vitaminList.proportional(this.servingSize));
 		return prop;

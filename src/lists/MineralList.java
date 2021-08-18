@@ -98,7 +98,7 @@ public class MineralList {
 	 * @param servingSize Tamanho da porção que será usada como base
 	 * @return Lista de minerais com valores de quantidade proporcionais à porção
 	 */
-	public MineralList proportional(double servingSize) {
+	public MineralList proportionTo(double servingSize) {
 		MineralList prop = new MineralList(this.getMineralList());
 		for(int i=0; i<this.mineralList.size(); i++) {
 			prop.getMineralList().get(i).setAmount(this.mineralList.get(i).getAmount() / servingSize);
@@ -117,6 +117,7 @@ public class MineralList {
 			this.mineralList.get(i).setAmount(this.mineralList.get(i).getAmount() * n);
 		}
 	}
+	
 	
 	//ToString
 	@Override
