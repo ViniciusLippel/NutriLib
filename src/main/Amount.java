@@ -23,7 +23,7 @@ public class Amount <T> {
 	public void setAmount(double quantity) {
 		this.amount = quantity;
 	}
-
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

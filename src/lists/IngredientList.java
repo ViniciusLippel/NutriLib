@@ -4,7 +4,14 @@ import java.util.ArrayList;
 
 import main.Amount;
 import main.Ingredient;
+import main.NutriValue;
 
+/**
+ * Classe que armazena uma lista de ingredientes e suas quantidades utilizando a classe Amount
+ * 
+ * @author Vinicius Lippel
+ *
+ */
 public class IngredientList {
 	
 	private ArrayList<Amount<Ingredient>> ingredientList;
@@ -19,7 +26,7 @@ public class IngredientList {
 	/**
 	 * Construtor
 	 * 
-	 * @param ingredientList Lista de ingredientes e suas respectivas quantidades em gramas
+	 * @param ingredientList Lista de Amount contendo ingredientes e quatidades
 	 */
 	public IngredientList(ArrayList<Amount<Ingredient>> ingredientList) {
 		this.ingredientList = ingredientList;
@@ -76,6 +83,18 @@ public class IngredientList {
 		for(int i=0; i<ingredientList.getIngredientList().size(); i++) {
 			this.ingredientList.add(ingredientList.getIngredientList().get(i));
 		}
+	}
+	
+	
+	public NutriValue nutriValue(double servingSize) {
+		NutriValue total = new NutriValue();
+		for(int i=0; i<this.ingredientList.size(); i++) {
+			total.sum(this.ingredientList.get(i).getObject().getNutriValue());
+		}
+		NutriValue totalByServSize = total.proportional();
+		totalByServSize.multiply(servingSize);
+		
+		return totalByServSize;
 	}
 
 	@Override

@@ -5,6 +5,15 @@ public class Vitamin {
 	private String name;
 	private String info;
 	
+	public Vitamin(String name) {
+		this.name = name;
+	}
+	
+	public Vitamin info(String info) {
+		this.info = info;
+		return this;
+	}
+	
 	//Getters & Setters
 	public String getName() {
 		return name;

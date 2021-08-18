@@ -5,6 +5,15 @@ public class Mineral {
 	private String name;
 	private String info;
 	
+	public Mineral(String name) {
+		this.name = name;
+	}
+	
+	public Mineral info(String info) {
+		this.info = info;
+		return this;
+	}
+	
 	//Getters & Setters
 	public String getName() {
 		return name;

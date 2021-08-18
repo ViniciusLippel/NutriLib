@@ -5,14 +5,17 @@ import lists.VitaminList;
 
 public class NutriValue {
 	
-	private int servingSize;
-	private int calories;
+	private double servingSize;
+	private double calories;
 	private double carbs;
 	private Fat fat;
 	private double protein;
 	private MineralList mineralList;
 	private VitaminList vitaminList;
 	
+	public NutriValue() {
+		
+	}
 	
 	public NutriValue(int servingSize, int calories) {
 		this.servingSize = servingSize;
@@ -47,17 +50,17 @@ public class NutriValue {
 
 	
 	//Getters & Setters
-	public int getServingSize() {
+	public double getServingSize() {
 		return servingSize;
 	}
-	public void setServingSize(int servingSize) {
+	public void setServingSize(double servingSize) {
 		this.servingSize = servingSize;
 	}
 
-	public int getCalories() {
+	public double getCalories() {
 		return calories;
 	}
-	public void setCalories(int calories) {
+	public void setCalories(double calories) {
 		this.calories = calories;
 	}
 	
@@ -116,16 +119,66 @@ public class NutriValue {
 	
 	
 	//Sum NutriValue
-	public void sumNutriValue(NutriValue nutriValue) {
+	public void sum(NutriValue nutriValue) {
 		this.servingSize = this.servingSize + nutriValue.getServingSize();
 		this.calories = this.calories + nutriValue.getCalories();
 		this.carbs = this.carbs + nutriValue.getCarbs();
-		this.fat.sum(nutriValue.getFat());
+		
+		if(this.fat != null)
+			this.fat.sum(nutriValue.getFat());
+		else 
+			this.fat = nutriValue.getFat();
+		
 		this.protein = this.protein + nutriValue.getProtein();
-		this.mineralList.sum(nutriValue.getMineralList());
-		this.vitaminList.sum(nutriValue.getVitaminList());
+		
+		if(nutriValue.getMineralList() != null) {
+			if(this.mineralList == null)
+				this.mineralList = new MineralList();
+			this.mineralList.sum(nutriValue.getMineralList());
+		}
+
+		
+		if(this.vitaminList != null && nutriValue.getVitaminList() != null)
+			this.vitaminList.sum(nutriValue.getVitaminList());
+		else
+			this.vitaminList = nutriValue.getVitaminList();
 	}
 	
+	/**
+	 * Proporcional
+	 * @return
+	 */
+	public NutriValue proportional() {
+		NutriValue prop = new NutriValue();
+		prop.setServingSize(1);
+		prop.setCalories(this.calories / this.servingSize);
+		prop.setCarbs(this.carbs / this.servingSize);
+		if(this.fat != null)
+			prop.setFat(this.fat.proportional(this.servingSize));
+		prop.setProtein(this.protein / this.servingSize);
+		if(this.mineralList != null)
+			prop.setMineralList(this.mineralList.proportional(this.servingSize));
+		if(this.vitaminList != null)
+			prop.setVitaminList(this.vitaminList.proportional(this.servingSize));
+		return prop;
+	}
+	
+	/**
+	 * Multiplicar
+	 * @param n
+	 */
+	public void multiply(double n) {
+		this.setServingSize(this.servingSize * n);
+		this.setCalories(this.calories * n);
+		this.setCarbs(this.carbs * n);
+		if(this.fat != null)
+			this.fat.multiply(n);
+		this.setProtein(this.protein * n);
+		if(this.mineralList != null)
+			this.mineralList.multiply(n);;
+		if(this.vitaminList != null)
+			this.vitaminList.multiply(n);;
+	}
 	
 	@Override
 	public String toString() {

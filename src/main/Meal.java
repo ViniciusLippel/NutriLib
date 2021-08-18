@@ -66,6 +66,24 @@ public class Meal {
 		this.ingredientList.add(newIngredient);
 	}
 	
+	/**
+	 * Valor nutricional
+	 */
+	public NutriValue nutriValue(double servingSize) {
+		NutriValue total = new NutriValue();
+		if(this.foodList != null) {
+			NutriValue foodNV = this.foodList.nutriValue(servingSize);
+			total.sum(foodNV);
+		}
+		if(this.ingredientList != null) {
+			NutriValue ingrNV = this.ingredientList.nutriValue(servingSize);
+			total.sum(ingrNV);
+		}
+		
+		NutriValue nutriValue = total.proportional();
+		nutriValue.multiply(servingSize);
+		return nutriValue;
+	}
 	
 	@Override
 	public String toString() {

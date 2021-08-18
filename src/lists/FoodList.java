@@ -4,16 +4,30 @@ import java.util.ArrayList;
 
 import main.Amount;
 import main.Food;
+import main.NutriValue;
 
-
+/**
+ * Classe que armazena uma lista de comidas e suas quantidades utilizando a classe Amount
+ * 
+ * @author Vinicius Lippel
+ *
+ */
 public class FoodList {
 	
 	private ArrayList<Amount<Food>> foodList;
 	
+	/**
+	 * Construtor
+	 */
 	public FoodList() {
 		this.foodList = new ArrayList<Amount<Food>>();
 	}
 	
+	/**
+	 * Construtor
+	 * 
+	 * @param foodList Lista de Amount contendo comidas e quantidades
+	 */
 	public FoodList(ArrayList<Amount<Food>> foodList) {
 		this.foodList = foodList;
 	}
@@ -28,7 +42,12 @@ public class FoodList {
 	}
 	
 	
-	//Add
+	/**
+	 * Adiciona Amount contendo comida e quantidade à lista. Caso a comida já exista,
+	 * apenas somará as quantidades
+	 * 
+	 * @param food Amount contendo comida e quantidade
+	 */
 	public void add(Amount<Food> food) {
 		Amount<Food> inList = searchByName(food.getObject().getName());
 		if(inList == null)
@@ -41,7 +60,12 @@ public class FoodList {
 	}
 	
 	
-	//Search by name
+	/**
+	 * Busca Amount na lista a partir do nome da comida
+	 * 
+	 * @param name Nome da comida
+	 * @return Caso encontrado, retorna Amount contendo comida e quantidade
+	 */
 	public Amount<Food> searchByName(String name){
 		for(int i=0; i<this.foodList.size(); i++) {
 			if(this.foodList.get(i).getObject().getName() == name)
@@ -51,13 +75,34 @@ public class FoodList {
 	}
 	
 	
-	//Sum FoodList
+	/**
+	 * Mescla duas listas utilizando método add (caso existam comidas em comum, 
+	 * apenas são somadas as quantidades)
+	 * 
+	 * @param foodList Lista de comidas a ser mesclada
+	 */
 	public void sum(FoodList foodList) {
 		for(int i=0; i<foodList.getFoodList().size(); i++) {
 			this.foodList.add(foodList.getFoodList().get(i));
 		}
 	}
-
+	
+	/**
+	 * Valor nutricional
+	 * @param servingSize
+	 * @return
+	 */
+	public NutriValue nutriValue(double servingSize) {
+		NutriValue total = new NutriValue();
+		for(int i=0; i<this.foodList.size(); i++) {
+			total.sum(this.foodList.get(i).getObject().getNutriValue());
+		}
+		NutriValue totalByServSize = total.proportional();
+		totalByServSize.multiply(servingSize);
+		
+		return totalByServSize;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

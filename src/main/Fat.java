@@ -5,6 +5,10 @@ public class Fat {
 	private double saturated;
 	private double trans;
 	
+	public Fat() {
+		
+	}
+	
 	public Fat(double total, double saturated, double trans) {
 		this.total = total;
 		this.saturated = saturated;
@@ -39,6 +43,20 @@ public class Fat {
 		this.total = this.total + fat.getTotal();
 		this.saturated = this.saturated + fat.getSaturated();
 		this.trans = this.trans + fat.getTrans();
+	}
+	
+	public Fat proportional(double servingSize) {
+		Fat prop = new Fat();
+		prop.setTotal(this.total / servingSize);
+		prop.setSaturated(this.saturated / servingSize);
+		prop.setTrans(this.trans / servingSize);
+		return prop;
+	}
+	
+	public void multiply(double n) {
+		this.setTotal(this.total * n);
+		this.setSaturated(this.saturated * n);
+		this.setTrans(this.trans * n);
 	}
 	
 	@Override
