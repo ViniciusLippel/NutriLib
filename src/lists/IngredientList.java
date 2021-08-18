@@ -7,7 +7,7 @@ import main.Ingredient;
 import main.NutriValue;
 
 /**
- * Classe que armazena uma lista de ingredientes e suas quantidades utilizando a classe Amount
+ * Classe que armazena uma lista de ingredientes e suas quantidades a partir da classe Amount
  * 
  * @author Vinicius Lippel
  *
@@ -16,12 +16,14 @@ public class IngredientList {
 	
 	private ArrayList<Amount<Ingredient>> ingredientList;
 	
+	
 	/**
 	 * Construtor
 	 */
 	public IngredientList() {
 		this.ingredientList = new ArrayList<Amount<Ingredient>>();
 	}
+	
 	
 	/**
 	 * Construtor
@@ -31,6 +33,7 @@ public class IngredientList {
 	public IngredientList(ArrayList<Amount<Ingredient>> ingredientList) {
 		this.ingredientList = ingredientList;
 	}
+	
 	
 	//Getters & Setters
 	public ArrayList<Amount<Ingredient>> getIngredientList() {
@@ -73,6 +76,7 @@ public class IngredientList {
 		return null;
 	}
 	
+	
 	/**
 	 * Mescla duas listas utilizando método add (caso existam ingredientes em comum, 
 	 * apenas são somadas as quantidades)
@@ -86,6 +90,12 @@ public class IngredientList {
 	}
 	
 	
+	/**
+	 * Calcula o valor nutricional da lista de ingredientes com base em uma porção
+	 * 
+	 * @param servingSize Tamanho da porção que será usada como base
+	 * @return Valor nutricional da lista de ingredientes com base em uma porção
+	 */
 	public NutriValue nutriValue(double servingSize) {
 		NutriValue total = new NutriValue();
 		for(int i=0; i<this.ingredientList.size(); i++) {
@@ -97,6 +107,8 @@ public class IngredientList {
 		return totalByServSize;
 	}
 
+	
+	//To String
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

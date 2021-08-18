@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import main.Amount;
 import main.Mineral;
+
+
 /**
- * Classe que armazena uma lista de minerais e suas quantidades utilizando a classe Amount
+ * Classe que armazena uma lista de minerais e suas quantidades a partir da classe Amount
  * 
  * @author Vinicius Lippel
  *
@@ -14,12 +16,14 @@ public class MineralList {
 	
 	private ArrayList<Amount<Mineral>> mineralList;
 	
+	
 	/**
 	 * Construtor
 	 */
 	public MineralList() {
 		this.mineralList = new ArrayList<Amount<Mineral>>();
 	}
+	
 	
 	/**
 	 * Construtor
@@ -89,7 +93,10 @@ public class MineralList {
 	
 	
 	/**
-	 * Proporcional
+	 * Calcula os valores de quantidade proporcionais à uma porção 
+	 * 
+	 * @param servingSize Tamanho da porção que será usada como base
+	 * @return Lista de minerais com valores de quantidade proporcionais à porção
 	 */
 	public MineralList proportional(double servingSize) {
 		MineralList prop = new MineralList(this.getMineralList());
@@ -99,8 +106,11 @@ public class MineralList {
 		return prop;
 	}
 	
+	
 	/**
-	 * multiplicar
+	 * Multiplica os valores de quantidade por um determinado número
+	 *  
+	 * @param n Número pelo qual os valores de quantidade serão multiplicados
 	 */
 	public void multiply(double n) {
 		for(int i=0; i<this.mineralList.size(); i++) {
@@ -108,6 +118,7 @@ public class MineralList {
 		}
 	}
 	
+	//ToString
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

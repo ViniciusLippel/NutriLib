@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import main.Amount;
 import main.Vitamin;
 
+
 /**
- * Classe que armazena uma lista de vitaminas e suas quantidades utilizando a classe Amount
+ * Classe que armazena uma lista de vitaminas e suas quantidades a partir da classe Amount
  * 
  * @author Vinicius Lippel
  *
@@ -15,12 +16,14 @@ public class VitaminList {
 	
 	private ArrayList<Amount<Vitamin>> vitaminList;
 	
+	
 	/**
 	 * Construtor
 	 */
 	public VitaminList() {
 		this.vitaminList = new ArrayList<Amount<Vitamin>>();
 	}
+	
 	
 	/**
 	 * Construtor
@@ -86,8 +89,12 @@ public class VitaminList {
 		}
 	}
 	
+	
 	/**
-	 * Proporcional
+	 * Calcula os valores de quantidade proporcionais à uma porção
+	 * 
+	 * @param servingSize Tamanho da porção que será usada como base
+	 * @return Lista de vitaminas com valores de quantidade proporcionais à porção
 	 */
 	public VitaminList proportional(double servingSize) {
 		VitaminList prop = new VitaminList(this.getVitaminList());
@@ -97,8 +104,11 @@ public class VitaminList {
 		return prop;
 	}
 	
+	
 	/**
-	 * multiplicar
+	 * Multiplica os valores de quantidade por um determinado número
+	 * 
+	 * @param n Número pelo qual os valores de quantidade serão multiplicados
 	 */
 	public void multiply(double n) {
 		for(int i=0; i<this.vitaminList.size(); i++) {
@@ -106,6 +116,8 @@ public class VitaminList {
 		}
 	}
 	
+	
+	//To String
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

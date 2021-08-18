@@ -2,6 +2,13 @@ package main;
 
 import lists.IngredientList;
 
+
+/**
+ * Classe que armazena um alimento, contendo nome, informações, lista de ingredientes e valor nutricional 
+ * 
+ * @author Vinicius Lippel
+ *
+ */
 public class Food {
 	
 	private String name;
@@ -9,24 +16,49 @@ public class Food {
 	private IngredientList ingredientList;
 	private NutriValue nutriValue;
 	
+	
+	/**
+	 * Construtor
+	 * 
+	 * @param name Nome do alimento
+	 */
 	public Food(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * Instancia da classe com informação
+	 * 
+	 * @param info Informação a ser armazenada
+	 * @return Objeto atual
+	 */
 	public Food info(String info) {
 		this.info = info;
 		return this;
 	}
 	
+	/**
+	 * Instancia da classe com lista de ingredientes
+	 * 
+	 * @param ingredientList lista de ingredientes
+	 * @return Objeto atual
+	 */
 	public Food ingredientList(IngredientList ingredientList) {
 		this.ingredientList = ingredientList;
 		return this;
 	}
 	
+	/**
+	 * Instancia da classe com valor nutricional
+	 * 
+	 * @param nutriValue Valor nutricional
+	 * @return Objeto atual
+	 */
 	public Food nutriValue(NutriValue nutriValue) {
 		this.nutriValue = nutriValue;
 		return this;
 	}
+	
 	
 	//Getters & Setters
 	public String getName() {
@@ -55,7 +87,12 @@ public class Food {
 	}
 	
 	
-	//Add Ingredient
+	/**
+	 * Adiciona um ingrediente e sua quantidade à lista de ingredientes
+	 * 
+	 * @param ingredient Ingrediente
+	 * @param amount Quantidade
+	 */
 	public void addIngredient(Ingredient ingredient, double amount) {
 		Amount<Ingredient> newIngredient = new Amount<Ingredient>(ingredient, amount);
 		if(this.ingredientList == null)

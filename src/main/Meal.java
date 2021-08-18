@@ -3,6 +3,13 @@ package main;
 import lists.FoodList;
 import lists.IngredientList;
 
+
+/**
+ * Classe que armazena uma refeição, contendo nome, informação, lista de alimentos e lista de ingredientes
+ * 
+ * @author Vinícius Lippel
+ *
+ */
 public class Meal {
 	
 	private String name;
@@ -10,20 +17,50 @@ public class Meal {
 	private FoodList foodList;
 	private IngredientList ingredientList;
 	
+	
+	/**
+	 * Construtor
+	 * 
+	 * @param name Nome do alimento
+	 */
 	public Meal(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * Instancia da classe com informação
+	 * @param info Informações do alimento
+	 * @return Objeto atual
+	 */
+	public Meal info(String info) {
+		this.info = info;
+		return this;
+	}
+	
+	/**
+	 * Instancia da classe com lista de comidas
+	 * 
+	 * @param foodList Lista de comidas
+	 * @return Objeto atual
+	 */
 	public Meal foodList(FoodList foodList) {
 		this.foodList = foodList;
 		return this;
 	}
 	
+	/**
+	 * Instancia da classe com lista de ingredientes
+	 * 
+	 * @param ingredientList lista de ingredientes
+	 * @return Objeto atual
+	 */
 	public Meal ingredientList(IngredientList ingredientList) {
 		this.ingredientList = ingredientList;
 		return this;
 	}
 	
+	
+	//Getters & Setters
 	public String getName() {
 		return name;
 	}
@@ -50,7 +87,12 @@ public class Meal {
 	}
 	
 	
-	//AddFood
+	/**
+	 * Adiciona um alimento e sua quantidade à lista de alimentos
+	 * 
+	 * @param food Alimento a ser adicionado
+	 * @param amount Quantidade do alimento
+	 */
 	public void addFood(Food food, double amount){
 		Amount<Food> newFood = new Amount<Food>(food, amount);
 		if(this.foodList == null)
@@ -58,7 +100,13 @@ public class Meal {
 		this.foodList.add(newFood);
 	}
 	
-	//AddIngredient
+	
+	/**
+	 * Adiciona um ingrediente e sua quantidade à lista de ingredientes
+	 * 
+	 * @param ingredient Ingrediente a ser adicionado
+	 * @param amount Quantidade do ingrediente
+	 */
 	public void addIngredient(Ingredient ingredient, double amount) {
 		Amount<Ingredient> newIngredient = new Amount<Ingredient>(ingredient, amount);
 		if(this.ingredientList == null)
@@ -66,8 +114,12 @@ public class Meal {
 		this.ingredientList.add(newIngredient);
 	}
 	
+	
 	/**
-	 * Valor nutricional
+	 * Calcula o valor nutricional da refeição com base em uma porção
+	 * 
+	 * @param servingSize Porção que será utilizada como base
+	 * @return Valor nuticional da refeição com base em uma porção
 	 */
 	public NutriValue nutriValue(double servingSize) {
 		NutriValue total = new NutriValue();
@@ -85,6 +137,8 @@ public class Meal {
 		return nutriValue;
 	}
 	
+	
+	//To String
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

@@ -2,9 +2,10 @@ package main;
 
 
 /**
+ * Classe que armazena um ingrediente, contendo nome, informação e valor nutricional
  * 
  * @author Vinicius Lippel
- *
+ * 
  */
 
 public class Ingredient {
@@ -13,11 +14,20 @@ public class Ingredient {
 	private String info;
 	private NutriValue nutriValue;
 	
+	
+	/**
+	 * Construtor
+	 * 
+	 * @param name Nome do ingrediente
+	 * @param nutriValue Valor nutricional
+	 */
 	public Ingredient(String name, NutriValue nutriValue) {
 		this.name = name;
 		this.nutriValue = nutriValue;
 	}
-
+	
+	
+	//Getters & Setters
 	public String getName() {
 		return name;
 	}
@@ -37,6 +47,8 @@ public class Ingredient {
 		this.nutriValue = nutriValue;
 	}
 
+	
+	//To String
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

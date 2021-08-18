@@ -7,7 +7,7 @@ import main.Food;
 import main.NutriValue;
 
 /**
- * Classe que armazena uma lista de comidas e suas quantidades utilizando a classe Amount
+ * Classe que armazena uma lista de comidas e suas quantidades a partir da classe Amount
  * 
  * @author Vinicius Lippel
  *
@@ -16,12 +16,14 @@ public class FoodList {
 	
 	private ArrayList<Amount<Food>> foodList;
 	
+	
 	/**
 	 * Construtor
 	 */
 	public FoodList() {
 		this.foodList = new ArrayList<Amount<Food>>();
 	}
+	
 	
 	/**
 	 * Construtor
@@ -87,10 +89,12 @@ public class FoodList {
 		}
 	}
 	
+	
 	/**
-	 * Valor nutricional
-	 * @param servingSize
-	 * @return
+	 * Calcula o valor nutricional da lista de alimentos com base em uma porção
+	 * 
+	 * @param servingSize Tamanho da porção que será usada como base
+	 * @return Valor nutricional da lista de alimentos com base em uma porção
 	 */
 	public NutriValue nutriValue(double servingSize) {
 		NutriValue total = new NutriValue();
@@ -103,6 +107,8 @@ public class FoodList {
 		return totalByServSize;
 	}
 	
+	
+	//ToString
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

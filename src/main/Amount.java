@@ -1,15 +1,32 @@
 package main;
 
+
+/**
+ * Classe que armazena um objeto genérico e sua quantidade
+ * 
+ * @author Vinicius Lippel
+ *
+ * @param <T> Tipo do objeto à ser armazenado
+ */
 public class Amount <T> {
 	
 	private T object;
 	private double amount;
 	
+	
+	/**
+	 * Construtor
+	 * 
+	 * @param object Objeto que será armazenado
+	 * @param amount Quantidade do objeto
+	 */
 	public Amount (T object, double amount) {
 		this.object = object;
 		this.amount = amount;
 	}
 	
+	
+	//Getters & Setters
 	public T getObject() {
 		return object;
 	}
@@ -24,6 +41,8 @@ public class Amount <T> {
 		this.amount = quantity;
 	}
 	
+	
+	//To String
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
